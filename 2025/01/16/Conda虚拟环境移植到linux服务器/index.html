@@ -19,24 +19,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"1599164293.github.io","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.21.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js"></script>
 
-    <meta property="og:type" content="website">
-<meta property="og:title" content="妞妞">
-<meta property="og:url" content="https://1599164293.github.io/archives/index.html">
+    <meta name="description" content="ubuntu下python虚拟环境的创建与迁移## python虚拟环境的创建  下载python3-venv  &#96;&#96;&#96;pythonsudo apt install python3-venv&#96;&#96;&#96;  创建虚拟环境  &#96;&#96;&#96;pythonpython3 -m venv [虚拟环境名]&#96;&#96;&#96;  使用虚拟环境  &#96;&#96;&#96;pyth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Conda虚拟环境移植到linux服务器">
+<meta property="og:url" content="https://1599164293.github.io/2025/01/16/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%A7%BB%E6%A4%8D%E5%88%B0linux%E6%9C%8D%E5%8A%A1%E5%99%A8/index.html">
 <meta property="og:site_name" content="妞妞">
+<meta property="og:description" content="ubuntu下python虚拟环境的创建与迁移## python虚拟环境的创建  下载python3-venv  &#96;&#96;&#96;pythonsudo apt install python3-venv&#96;&#96;&#96;  创建虚拟环境  &#96;&#96;&#96;pythonpython3 -m venv [虚拟环境名]&#96;&#96;&#96;  使用虚拟环境  &#96;&#96;&#96;pyth">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-01-16T04:28:21.000Z">
+<meta property="article:modified_time" content="2025-01-16T04:39:58.715Z">
 <meta property="article:author" content="zrz">
 <meta property="article:tag" content="Java,算法,编程技术,Linux">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://1599164293.github.io/archives/">
+<link rel="canonical" href="https://1599164293.github.io/2025/01/16/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%A7%BB%E6%A4%8D%E5%88%B0linux%E6%9C%8D%E5%8A%A1%E5%99%A8/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"archives/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://1599164293.github.io/2025/01/16/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%A7%BB%E6%A4%8D%E5%88%B0linux%E6%9C%8D%E5%8A%A1%E5%99%A8/","path":"2025/01/16/Conda虚拟环境移植到linux服务器/","title":"Conda虚拟环境移植到linux服务器"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>归档 | 妞妞</title>
+<title>Conda虚拟环境移植到linux服务器 | 妞妞</title>
   
 
 
@@ -69,7 +73,7 @@
 
     <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
-      <h1 class="site-title">妞妞</h1>
+      <p class="site-title">妞妞</p>
       <i class="logo-line"></i>
     </a>
   </div>
@@ -95,7 +99,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -108,6 +112,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu%E4%B8%8Bpython%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%9A%84%E5%88%9B%E5%BB%BA%E4%B8%8E%E8%BF%81%E7%A7%BB"><span class="nav-number">1.</span> <span class="nav-text">ubuntu下python虚拟环境的创建与迁移</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -147,172 +152,116 @@
 
     </div>
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">嗯..! 目前共计 7 篇日志。 继续努力。</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://1599164293.github.io/2025/01/16/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%A7%BB%E6%A4%8D%E5%88%B0linux%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zrz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="妞妞">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Conda虚拟环境移植到linux服务器 | 妞妞">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Conda虚拟环境移植到linux服务器
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2025<span class="collection-year-count">2</span></span>
+
+      <time title="创建时间：2025-01-16 12:28:21 / 修改时间：12:39:58" itemprop="dateCreated datePublished" datetime="2025-01-16T12:28:21+08:00">2025-01-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="ubuntu下python虚拟环境的创建与迁移"><a href="#ubuntu下python虚拟环境的创建与迁移" class="headerlink" title="ubuntu下python虚拟环境的创建与迁移"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/coididy/p/12683152.html">ubuntu下python虚拟环境的创建与迁移</a></h1><p>## python虚拟环境的创建</p>
+<ol>
+<li>下载python3-venv</li>
+</ol>
+<p>`&#96;&#96;python<br>sudo apt install python3-venv<br>`&#96;&#96;</p>
+<ol start="2">
+<li>创建虚拟环境</li>
+</ol>
+<p>`&#96;&#96;python<br>python3 -m venv [虚拟环境名]<br>`&#96;&#96;</p>
+<ol start="3">
+<li>使用虚拟环境</li>
+</ol>
+<p>`&#96;&#96;python<br>#虚拟环境名&#x2F;bin目录下<br>source activate<br>`&#96;&#96;</p>
+<ol start="4">
+<li>退出虚拟环境</li>
+</ol>
+<p>`&#96;&#96;python<br>deactivate<br>`&#96;&#96;</p>
+<p>## 虚拟环境迁移<br><strong>虚拟环境直接拷贝粘贴是有可能出现问题的，所以一般不使用</strong>，所以需要对虚拟环境进行迁移。已知有两种方法进行迁移，分别对应在线迁移和离线迁移。<br>#### 1.在线迁移——有网<br>`&#96;&#96;python<br>#先激活原虚拟环境<br>source activate<br>#提取虚拟环境依赖项到文件<br>pip freeze &gt; requirements.txt<br>#在目标机中，创建新的虚拟环境<br>#在新的虚拟环境中重新安装依赖模块<br>pip install -r requirements.txt<br>`&#96;&#96;<br>#### 2.离线迁移——有网或无网<br>`&#96;&#96;python<br>#先激活原虚拟环境<br>source activate<br>#提取虚拟环境依赖项到文件<br>pip freeze &gt; requirements.txt<br>#在原环境中先下载离线安装包<br>pip download -d 目标文件夹 -r requirements.txt<br>#打包目标文件夹到目标机器中<br>#在目标机中创建新的虚拟环境<br>#激活运行目标机上的虚拟环境<br>#批量安装离线安装包<br>pip install –no-index –find-links&#x3D;目标文件夹 -r requirements.txt<br>`&#96;&#96;</p>
+<hr>
+<pre><code>如果环境比较复杂，最好的办法是将整个anaconda环境直接导入，非常方便。在有网络的环境下安装Anaconda后，新建虚拟环境，并用conda/pip安装所需要的库，然后将整个环境迁移到无网络的服务器上即可，前提是无网络的服务器上也需要安装Anaconda。
+</code></pre>
+<p>1、直接复制文件夹<br>        如下图所示，Anaconda的环境都是安装在envs目录下，使用命令conda env list显示的也是该目录下的环境，因此可以直接将对应的文件夹拷贝到目标机器上Anaconda安装目录的envs文件夹下即可正常使用，如果有Spyder、Jupyter等需要修改一下里面配置文件的路径。</p>
+<p>2、将环境打包迁移<br>（1）克隆环境（可省略）</p>
+<p>conda create -n 新环境的名称 –clone 老环境名称<br>（2）将环境打包</p>
+<p>conda install -c conda-forge conda-pack # 安装conda-forge和conda-pack工具</p>
+<p>conda pack -n 新环境名称 -o 新环境名称.tar.gz # 将环境打包</p>
+<p>（3）将压缩包放到目标主机的同版本Anaconda路径下的envs文件夹内，解压<br>        注意：需要相同版本的Anaconda</p>
+<p>（4）在目标主机上激活环境</p>
+<p>conda activate 新环境</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-01-16T12:28:21+08:00"
-              content="2025-01-16">
-          01-16
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/01/16/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%A7%BB%E6%A4%8D%E5%88%B0linux%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url">
-            <span itemprop="name">Conda虚拟环境移植到linux服务器</span>
-          </a>
-      </div>
+    <footer class="post-footer">
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2025/01/06/SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8/" rel="prev" title="SpringMVC拦截器">
+                  <i class="fa fa-angle-left"></i> SpringMVC拦截器
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2025-01-06T14:06:45+08:00"
-              content="2025-01-06">
-          01-06
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2025/01/06/SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8/" itemprop="url">
-            <span itemprop="name">SpringMVC拦截器</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-    <div class="collection-year">
-      <span class="collection-header">2024<span class="collection-year-count">5</span></span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-11-16T14:01:21+08:00"
-              content="2024-11-16">
-          11-16
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/11/16/Spring-AOP%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" itemprop="url">
-            <span itemprop="name">Spring AOP底层原理</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-11-12T09:34:51+08:00"
-              content="2024-11-12">
-          11-12
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/11/12/neo4j%E5%AE%89%E8%A3%85-%E5%90%AF%E5%8A%A8/" itemprop="url">
-            <span itemprop="name">neo4j安装 启动</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-11-08T09:04:35+08:00"
-              content="2024-11-08">
-          11-08
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/11/08/Spring%E5%B0%8F%E7%BB%93/" itemprop="url">
-            <span itemprop="name">Spring小结</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-11-07T21:41:08+08:00"
-              content="2024-11-07">
-          11-07
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/11/07/%E7%AE%97%E6%B3%95%E5%B0%8F%E8%AE%A1/" itemprop="url">
-            <span itemprop="name">算法小计</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2024-10-29T21:55:53+08:00"
-              content="2024-10-29">
-          10-29
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2024/10/29/%E8%A7%A3%E5%86%B3win11%E6%97%A0%E6%B3%95%E5%AE%89%E8%A3%85.net%20framework%203.5%EF%BC%88%E5%8C%85%E6%8B%AC.net2.0%E5%92%8C3.0%EF%BC%89/" itemprop="url">
-            <span itemprop="name">解决win11无法安装.net framework 3.5（包括.net2.0和3.0）</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
+
+
+
 
 </div>
   </main>

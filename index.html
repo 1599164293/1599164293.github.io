@@ -120,7 +120,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -148,6 +148,358 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://1599164293.github.io/2025/01/16/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%A7%BB%E6%A4%8D%E5%88%B0linux%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zrz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="妞妞">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 妞妞">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/16/Conda%E8%99%9A%E6%8B%9F%E7%8E%AF%E5%A2%83%E7%A7%BB%E6%A4%8D%E5%88%B0linux%E6%9C%8D%E5%8A%A1%E5%99%A8/" class="post-title-link" itemprop="url">Conda虚拟环境移植到linux服务器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2025-01-16 12:28:21 / 修改时间：12:39:58" itemprop="dateCreated datePublished" datetime="2025-01-16T12:28:21+08:00">2025-01-16</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="ubuntu下python虚拟环境的创建与迁移"><a href="#ubuntu下python虚拟环境的创建与迁移" class="headerlink" title="ubuntu下python虚拟环境的创建与迁移"></a><a target="_blank" rel="noopener" href="https://www.cnblogs.com/coididy/p/12683152.html">ubuntu下python虚拟环境的创建与迁移</a></h1><p>## python虚拟环境的创建</p>
+<ol>
+<li>下载python3-venv</li>
+</ol>
+<p>`&#96;&#96;python<br>sudo apt install python3-venv<br>`&#96;&#96;</p>
+<ol start="2">
+<li>创建虚拟环境</li>
+</ol>
+<p>`&#96;&#96;python<br>python3 -m venv [虚拟环境名]<br>`&#96;&#96;</p>
+<ol start="3">
+<li>使用虚拟环境</li>
+</ol>
+<p>`&#96;&#96;python<br>#虚拟环境名&#x2F;bin目录下<br>source activate<br>`&#96;&#96;</p>
+<ol start="4">
+<li>退出虚拟环境</li>
+</ol>
+<p>`&#96;&#96;python<br>deactivate<br>`&#96;&#96;</p>
+<p>## 虚拟环境迁移<br><strong>虚拟环境直接拷贝粘贴是有可能出现问题的，所以一般不使用</strong>，所以需要对虚拟环境进行迁移。已知有两种方法进行迁移，分别对应在线迁移和离线迁移。<br>#### 1.在线迁移——有网<br>`&#96;&#96;python<br>#先激活原虚拟环境<br>source activate<br>#提取虚拟环境依赖项到文件<br>pip freeze &gt; requirements.txt<br>#在目标机中，创建新的虚拟环境<br>#在新的虚拟环境中重新安装依赖模块<br>pip install -r requirements.txt<br>`&#96;&#96;<br>#### 2.离线迁移——有网或无网<br>`&#96;&#96;python<br>#先激活原虚拟环境<br>source activate<br>#提取虚拟环境依赖项到文件<br>pip freeze &gt; requirements.txt<br>#在原环境中先下载离线安装包<br>pip download -d 目标文件夹 -r requirements.txt<br>#打包目标文件夹到目标机器中<br>#在目标机中创建新的虚拟环境<br>#激活运行目标机上的虚拟环境<br>#批量安装离线安装包<br>pip install –no-index –find-links&#x3D;目标文件夹 -r requirements.txt<br>`&#96;&#96;</p>
+<hr>
+<pre><code>如果环境比较复杂，最好的办法是将整个anaconda环境直接导入，非常方便。在有网络的环境下安装Anaconda后，新建虚拟环境，并用conda/pip安装所需要的库，然后将整个环境迁移到无网络的服务器上即可，前提是无网络的服务器上也需要安装Anaconda。
+</code></pre>
+<p>1、直接复制文件夹<br>        如下图所示，Anaconda的环境都是安装在envs目录下，使用命令conda env list显示的也是该目录下的环境，因此可以直接将对应的文件夹拷贝到目标机器上Anaconda安装目录的envs文件夹下即可正常使用，如果有Spyder、Jupyter等需要修改一下里面配置文件的路径。</p>
+<p>2、将环境打包迁移<br>（1）克隆环境（可省略）</p>
+<p>conda create -n 新环境的名称 –clone 老环境名称<br>（2）将环境打包</p>
+<p>conda install -c conda-forge conda-pack # 安装conda-forge和conda-pack工具</p>
+<p>conda pack -n 新环境名称 -o 新环境名称.tar.gz # 将环境打包</p>
+<p>（3）将压缩包放到目标主机的同版本Anaconda路径下的envs文件夹内，解压<br>        注意：需要相同版本的Anaconda</p>
+<p>（4）在目标主机上激活环境</p>
+<p>conda activate 新环境</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://1599164293.github.io/2025/01/06/SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zrz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="妞妞">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 妞妞">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2025/01/06/SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8/" class="post-title-link" itemprop="url">SpringMVC拦截器</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2025-01-06 14:06:45" itemprop="dateCreated datePublished" datetime="2025-01-06T14:06:45+08:00">2025-01-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-09 00:22:13" itemprop="dateModified" datetime="2025-01-09T00:22:13+08:00">2025-01-09</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>  拦截器是一种动态拦截方法调用的机制，在SpringMVC中动态拦截控制器的方法的执行。在指定的方法的调用前后执行预先设定的代码，或者阻止原始方法的执行。</p>
+<img src="/2025/01/06/SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8/SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8.md" class="" title="image-20250106150343817">
+
+<img src="/2025/01/06/SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8/image-20250106150519579.png" class="" title="image-20250106150519579">
+
+<img src="/2025/01/06/SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8/image-20250106150533300.png" class="" title="image-20250106150533300">
+
+<p>拦截器参数</p>
+<img src="/2025/01/06/SpringMVC%E6%8B%A6%E6%88%AA%E5%99%A8/image-20250106151356786.png" class="" title="image-20250106151356786">
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://1599164293.github.io/2024/11/16/Spring-AOP%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zrz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="妞妞">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 妞妞">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/16/Spring-AOP%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/" class="post-title-link" itemprop="url">Spring AOP底层原理</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-11-16 14:01:21" itemprop="dateCreated datePublished" datetime="2024-11-16T14:01:21+08:00">2024-11-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-11-17 21:45:24" itemprop="dateModified" datetime="2024-11-17T21:45:24+08:00">2024-11-17</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h5 id="谈谈自己对于-AOP-的了解"><a href="#谈谈自己对于-AOP-的了解" class="headerlink" title="谈谈自己对于 AOP 的了解"></a>谈谈自己对于 AOP 的了解</h5><p>​    AOP(Aspect-Oriented Programming:面向切面编程)能够将那些与业务无关，却为业务模块所共同调用的逻辑或责任（例如事务处理、日志管理、权限控制等）封装起来，<strong>便于减少系统的重复代码，降低模块间的耦合度，并有利于未来的可拓展性和可维护性。在不修改核心业务代码的情况下增强功能。</strong></p>
+<p>​    Spring AOP 就是基于动态代理的，如果要代理的对象，实现了某个接口，那么 Spring AOP 会使用 <strong>JDK Proxy</strong>，去创建代理对象，而对于没有实现接口的对象，就无法使用 JDK Proxy 去进行代理了，这时候 Spring AOP 会使用 <strong>Cglib</strong> 生成一个被代理对象的子类来作为代理。</p>
+<p><strong>两者区别：</strong></p>
+<p><strong>JDK动态代理</strong>：<strong>需要被代理对象的类实现了某些接口</strong>，生成的代理类也会实现相应的接口</p>
+<p><strong>CGLIB动态代理</strong>：不需要被代理对象的类实现了某些接口，<strong>生成的代理类为目标对象的类的子类</strong></p>
+<img src="/2024/11/16/Spring-AOP%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/23cd821e1d4ce51df301908702c8ea49.png" class="" title="img">
+
+<h5 id="Spring-AOP自动代理时机"><a href="#Spring-AOP自动代理时机" class="headerlink" title="Spring AOP自动代理时机"></a>Spring AOP自动代理时机</h5><p>在service bean的创建过程中(也就是<code>getBean(&quot;service&quot;)</code>)，AOP通过<code>BeanPostProcess</code>后置处理器操作进行介入 分为2种情况：</p>
+<ul>
+<li>用户自定义了<code>targetSource</code>，则bean的创建(实例化、填充、初始化)均由用户负责，Spring Ioc不会在管该代理目标对象traget，这种情况基本上不会发生，很多人用了几年Spring可能都不知道有它的存在</li>
+<li>正常情况下都是Spring Ioc完成代理对象target的实例化、填充、初始化。然后在<strong>初始化后置处理器</strong>中进行介入，对bean也就是service进行代理</li>
+</ul>
+<img src="/2024/11/16/Spring-AOP%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/ec34eab2c52273a53d25fd2c2bdfc842.png" class="" title="img">
+
+<p>   后置处理器中调用wraplfNecessary(“service”)方法创建代理对象，先获取所有的切面，在所有切面中匹配当前的bean实例，如果没有切面匹配当前的bean对象就普通构建一个bean不构建代理对象。如果有切面匹配当前bean创建代理对象，给有多匹配的切面排序（一个目标对象方法有多个增强通知方法作用）</p>
+<img src="/2024/11/16/Spring-AOP%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/0d4b71800353cf5bcbdbbc794d3041a4.png" class="" title="img">
+
+<img src="/2024/11/16/Spring-AOP%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86/c094267bfb82dddabf8af973fd6fc20c.png" class="" title="img">
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://1599164293.github.io/2024/11/12/neo4j%E5%AE%89%E8%A3%85-%E5%90%AF%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="zrz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="妞妞">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 妞妞">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/11/12/neo4j%E5%AE%89%E8%A3%85-%E5%90%AF%E5%8A%A8/" class="post-title-link" itemprop="url">neo4j安装 启动</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-11-12 09:34:51 / 修改时间：09:40:59" itemprop="dateCreated datePublished" datetime="2024-11-12T09:34:51+08:00">2024-11-12</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>  最近在做一个基于知识图谱的智能生成项目。需要用到Neo4j图数据库。写这篇文章记录一下Neo4j的安装及其使用。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/11/12/neo4j%E5%AE%89%E8%A3%85-%E5%90%AF%E5%8A%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -185,9 +537,15 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">发表于</span>
-      
 
-      <time title="创建时间：2024-11-08 09:04:35 / 修改时间：17:23:40" itemprop="dateCreated datePublished" datetime="2024-11-08T09:04:35+08:00">2024-11-08</time>
+      <time title="创建时间：2024-11-08 09:04:35" itemprop="dateCreated datePublished" datetime="2024-11-08T09:04:35+08:00">2024-11-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-12-08 19:27:46" itemprop="dateModified" datetime="2024-12-08T19:27:46+08:00">2024-12-08</time>
     </span>
 
   
@@ -201,9 +559,6 @@
     
     <div class="post-body" itemprop="articleBody">
           <h4 id="1-Spring-Framework-系统架构"><a href="#1-Spring-Framework-系统架构" class="headerlink" title="1.Spring Framework 系统架构"></a>1.Spring Framework 系统架构</h4><img src="/2024/11/08/Spring%E5%B0%8F%E7%BB%93/image-20241108092456155.png" class="" title="image-20241108092456155">
-
-<h4 id="2-IOC（Inversion-of-Control）控制反转"><a href="#2-IOC（Inversion-of-Control）控制反转" class="headerlink" title="2.IOC（Inversion of Control）控制反转"></a>2.IOC（Inversion of Control）控制反转</h4><h5 id="2-1-基本概念"><a href="#2-1-基本概念" class="headerlink" title="2.1 基本概念"></a>2.1 基本概念</h5><p>使用对象时，由主动<strong>new</strong>产生对象转化为由<strong>IOC容器</strong>提供对象。对象创建控制权由程序转移到外部，这种思想叫控制反转。</p>
-<p>  IOC容器负责对象的创建、初始化等一系列工作，被创建管理的对象在IOC容器中称为Bean。 </p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2024/11/08/Spring%E5%B0%8F%E7%BB%93/#more" rel="contents">
@@ -416,7 +771,7 @@
 
   <div class="copyright">
     &copy; 
-    <span itemprop="copyrightYear">2024</span>
+    <span itemprop="copyrightYear">2026</span>
     <span class="with-love">
       <i class="fa fa-heart"></i>
     </span>
